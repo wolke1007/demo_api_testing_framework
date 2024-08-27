@@ -1,75 +1,87 @@
-# Automation Test Framework Demo
+Here is the translated README.md in English:
+
+# API Automation Test Framework Demo
 
 ## Introduction
 ![Demo](doc/demo.gif)  
-This is a demo project for WAP Test automation.  
-The project utilizes frameworks such as Selenium, WebDriver Manager, Pytest, and Allure.  
-It is designed with extensibility in mind for Android, iOS, WAP, and WEB testing.  
-The results are recorded in an Allure report, and screenshots are taken at the end of each test step to facilitate debugging (screenshots can be disabled to improve execution speed).
+This is a demo project for API test automation. The project utilizes frameworks such as Pytest, Allure, Requests, and jsonschema.  
+The design considers the following scenarios:
+- Test cases support asynchronous execution to improve test speed when written asynchronously.
+- The jsonschema framework is used to ensure that the returned JSON format is correct.
+- Test results are saved using Allure reports.
 
 ## Running Tests
-To execute test cases:
-```
-cd twitch
 
-# Run WAP tests
-pytest -m wap_regression
+To run test cases:
 
-# Run Web tests
-pytest -m web_regression
+```bash
+# Run all tests in the project root directory
+pytest
 ```
 
-To view the Allure report:
+```bash
+# Run SWAPI tests
+pytest -m swapi
+
+# Run EmojiHub tests
+pytest -m emojihub
 ```
-# Ensure Allure is installed in your environment
-# For macOS
+
+To view the report using Allure:
+```bash
+# Ensure that Allure is installed on your system
+# macOS
 brew install allure
+```
 
-# Run allure server, to see allure report in html 
+```bash
+# Run Allure server to view the report in HTML
 allure serve ./allure_report
 ```
 
-## Project Extension
-1. The project is written using the PageObject pattern. You can add new pages in `{product_name}/page`, for example, `twitch/page`.
-2. In each Page, `elements` represents the DOM elements available for interaction or location. They are recorded in a dictionary and categorized into web/android/ios to allow reuse across platforms without rewriting PageObjects.
-3. Operations occurring on a Page are written in that Page, with `allure.step` used before each function to document the test steps.
-4. Add new TestCases in `{product_name}/testcase/{platform}`, for example, `twitch/testcase/wap`.
+## Project Expansion
+
+1. Add test cases in `testcase/{product_name}`, e.g., `testcase/swapi/test_swapi.py`.
+2. Optionally, add JSON schemas in `testcase/{product_name}/schema/schema.py` and `json_res_sample.py`.
 
 ---
 
-# 自動化測試框架示範
-
+# API自動化測試框架示範
 ## 介紹
-![示範](doc/demo.gif)  
-這是一個針對 WAP 測試自動化的示範專案。  
-專案使用了 Selenium、WebDriver Manager、Pytest 和 Allure 等框架。  
-設計時保留了對於 Android、iOS、WAP 和 WEB 測試的擴充性。  
-測試結果將利用 Allure 報告保存，每個測試步驟結束後會進行截圖以方便除錯（可以選擇取消截圖以提高執行速度）。
+![Demo](doc/demo.gif)  
+這是一個針對 API 測試自動化的示範專案。
+專案使用了 Pytest Allure Requests jsonschema 等框架。
+設計時考慮了以下場景：
+ - 測試用例支援非同步的方式執行，若使用非同步寫法則可以增加執行速度。
+ - 使用了 jsonschema 套件來確保 json 回傳的格式正確。
+ - 測試結果將利用 Allure 報告保存。
 
 ## 執行測試
 執行測試用例：
+
+```bash
+# 於專案根目錄下 執行全部測試
+pytest
 ```
-cd twitch
+```bash
+# 執行 swapi 測試
+pytest -m swapi
 
-# 執行 WAP 測試
-pytest -m wap_regression
-
-# 執行 Web 測試
-pytest -m web_regression
+# 執行 emojihub 測試
+pytest -m emojihub
 ```
 
 使用 Allure 開啟報告：
-```
+```bash
 # 確保你的環境已安裝 Allure
 # macOS
 brew install allure
-
+```
+```bash
 # 執行 allure server，在 html 上觀看 report
 allure serve ./allure_report
 ```
 
 ## 專案擴充
-1. 專案使用 PageObject 模式進行撰寫，你可以在 `{product_name}/page` 中新增頁面，例如 `twitch/page`。
-2. 在每個 Page 中，`elements` 代表該頁面中可用來操作或定位的 DOM 元素，以字典形式記錄，並分為 web/android/ios 三類，方便在需要支援跨平台時重用 PageObject，而無需重寫。
-3. 該 Page 上的操作將寫在該 Page 中，並在函數前使用 `allure.step` 記錄測試步驟。
-4. 在 `{product_name}/testcase/{platform}` 中新增測試用例，例如 `twitch/testcase/wap`。
+1. 在 testcase/{product_name} 中新增測試用例，例如 testcase/swapi/test_swapi.py
+2. 在 testcase/{product_name}/schema/schema.py and json_res_sample.py 中新增 json 的 schema(Optional)
