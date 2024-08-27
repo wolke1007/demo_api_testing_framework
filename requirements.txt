@@ -1,0 +1,4 @@
+pytest==8.3.2
+allure-pytest==2.13.5
+requests==2.32.3
+jsonschema

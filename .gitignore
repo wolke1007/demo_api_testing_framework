@@ -1,0 +1,5 @@
+.idea/*
+*.pyc
+allure_report/*.json
+allure_report/*.txt
+log/*.log
